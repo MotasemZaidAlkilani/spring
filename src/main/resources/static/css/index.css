@@ -1,0 +1,30 @@
+html, body {
+    margin: 0;
+    height: 100%;
+}
+.main-div{
+text-align: center;
+ background-color:white;}
+body{
+background-image:url("https://www.simplyrecipes.com/thmb/JWjdE8YwikAae0KZuyy6ZJW7Utw=/3000x2001/filters:no_upscale():max_bytes(150000):strip_icc()/Simply-Recipes-Homemade-Pizza-Dough-Lead-Shot-1c-c2b1885d27d4481c9cfe6f6286a64342.jpg");
+background-repeat:no-repeat;
+ background-size: cover;
+ display:flex;
+ justify-content:center;
+align-items: center;
+}
+h1,p{
+color :white;
+font-size: 50px;
+}
+h1{
+font-size: 90px;
+}
+.describtion{
+ width:500px;
+
+ background-color: #cb8429;
+}
+form{
+padding:15px;
+}
