@@ -2,16 +2,22 @@ package com.example.songr.web;
 
 import com.example.songr.data.album;
 import com.example.songr.data.albumRepositry;
+import com.example.songr.data.song;
+import com.example.songr.data.songRepsoitry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @org.springframework.stereotype.Controller
-public class Controller {
+public class albumController {
+
+    public albumController(com.example.songr.data.songRepsoitry songRepsoitry) {
+        this.songRepsoitry = songRepsoitry;
+    }
 
     @GetMapping("/hello")
     String helloWorld() {
@@ -48,4 +54,20 @@ public class Controller {
         modal.addAttribute("albumsList",albumCRUD.findAll());
         return "albums";
         }
+    @ResponseBody
+    @GetMapping("/album")
+    List<album> getAllAlbums(){
+        return (List<album>) albumCRUD.findAll();
+
+    }
+    private final songRepsoitry songRepsoitry;
+    @ResponseBody
+    @PostMapping("/albums/{id}")
+    RedirectView addSongToAlbum(@PathVariable Integer id ,@RequestBody song song){
+        album album= albumCRUD.findById(id).orElseThrow();
+        album.setSongs(song);
+        albumCRUD.save(album);
+        return new RedirectView("/album");
+
+    }
 }

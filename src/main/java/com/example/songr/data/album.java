@@ -1,13 +1,19 @@
 package com.example.songr.data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import lombok.*;
 
+import javax.persistence.*;
+import java.util.Set;
+@RequiredArgsConstructor
+@NoArgsConstructor
+@Setter
+@Getter
 @Entity
 public class album {
+    @Setter(value = AccessLevel.NONE)
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id",nullable = false)
     private int id;
    private  String title;
    private String artist;
@@ -15,17 +21,9 @@ public class album {
    private int length;
    private String image_url;
 
+   @OneToMany(mappedBy = "album")
+   Set<song> songs;
 
-    public album() {
-    }
-
-    public album(String title, String artist, int song_count, int length, String image_url) {
-        this.title = title;
-        this.artist = artist;
-        this.song_count = song_count;
-        this.length = length;
-        this.image_url = image_url;
-    }
 
     public int getId() {
         return id;
@@ -73,5 +71,13 @@ public class album {
 
     public void setImage_url(String image_url) {
         this.image_url = image_url;
+    }
+
+    public Set<song> getSongs() {
+        return songs;
+    }
+
+    public void setSongs(song songs) {
+        this.songs.add(songs);
     }
 }
