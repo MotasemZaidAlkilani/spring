@@ -31,15 +31,6 @@ public class albumController {
         return "capitalize";
     }
 
-    //    @ResponseBody
-//    @GetMapping("/albums")
-//    List<album> getAllAlbum(){
-//  List <album> albums=new ArrayList<>();
-//  albums.add(new album("never die","john",1000,190,"www.google.com/album1"));
-//    albums.add(new album("i see the sun","mr. I",250,88,"www.google.com/album2"));
-//    albums.add(new album("why so serious","wawah man",5456,240,"www.google.com/album3"));
-//return albums;
-//    }
 
     @GetMapping("/albumsJson")
     String getAllAlbum(Model model){
@@ -60,6 +51,7 @@ public class albumController {
         albumCRUD.save(albumObject);
         return new RedirectView("/albums");
     }
+    @GetMapping("/album")
         public String getAllAlbums(Model modal){
         modal.addAttribute("albumsList",albumCRUD.findAll());
         return "albums";
