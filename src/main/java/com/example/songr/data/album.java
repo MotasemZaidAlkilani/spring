@@ -1,5 +1,6 @@
 package com.example.songr.data;
 
+<<<<<<< HEAD
 import lombok.*;
 
 import javax.persistence.*;
@@ -8,6 +9,19 @@ import java.util.Set;
 @NoArgsConstructor
 @Setter
 @Getter
+=======
+import org.hibernate.type.ImageType;
+
+import javax.imageio.ImageIO;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import java.awt.*;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+
+>>>>>>> 6ac6d6004f6552b1cc77daf0fb2363fadd6921ca
 @Entity
 public class album {
     @Setter(value = AccessLevel.NONE)
@@ -24,6 +38,20 @@ public class album {
    @OneToMany(mappedBy = "album")
    Set<song> songs;
 
+<<<<<<< HEAD
+=======
+    public album() {
+    }
+
+    public album(String title, String artist, int song_count, int length, String image_url)  {
+        this.title = title;
+        this.artist = artist;
+        this.song_count = song_count;
+        this.length = length;
+        this.image_url=image_url;
+
+    }
+>>>>>>> 6ac6d6004f6552b1cc77daf0fb2363fadd6921ca
 
     public int getId() {
         return id;
