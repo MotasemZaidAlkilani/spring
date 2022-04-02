@@ -1,8 +1,15 @@
 package com.example.songr.data;
 
+import org.hibernate.type.ImageType;
+
+import javax.imageio.ImageIO;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.awt.*;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 @Entity
 public class album {
@@ -19,12 +26,13 @@ public class album {
     public album() {
     }
 
-    public album(String title, String artist, int song_count, int length, String image_url) {
+    public album(String title, String artist, int song_count, int length, String image_url)  {
         this.title = title;
         this.artist = artist;
         this.song_count = song_count;
         this.length = length;
-        this.image_url = image_url;
+        this.image_url=image_url;
+
     }
 
     public int getId() {
