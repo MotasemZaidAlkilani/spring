@@ -4,10 +4,7 @@ package com.example.songr.data;
 import lombok.*;
 
 import javax.persistence.*;
-@Setter
-@Getter
-@NoArgsConstructor
-@RequiredArgsConstructor
+
 @Entity
 public class song {
     @Id
@@ -17,20 +14,23 @@ public class song {
     private int length;
     private int trackNumber;
 
+
+
     @ManyToOne
+    @JoinColumn(name = "album_id")
     album album;
 
-    public void setAlbum(album album) {
-        this.album = album;
+
+    public song() {
     }
 
-    public int getId() {
-        return id;
+    public song(String title, int length, int trackNumber) {
+
+        this.title = title;
+        this.length = length;
+        this.trackNumber = trackNumber;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getTitle() {
         return title;
@@ -56,8 +56,12 @@ public class song {
         this.trackNumber = trackNumber;
     }
 
-    public com.example.songr.data.album getAlbum() {
+    public album getAlbum() {
         return album;
+    }
+
+    public void setAlbum(album album) {
+        this.album = album;
     }
 }
 

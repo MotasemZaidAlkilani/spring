@@ -47,8 +47,12 @@ public class albumController {
     albumRepositry albumCRUD;
 
     @PostMapping("/addAlbum")
-    public RedirectView createNewAlbum(@ModelAttribute album albumObject){
-        albumCRUD.save(albumObject);
+    public RedirectView createNewAlbum(@RequestParam String title,@RequestParam String artist,
+                                       @RequestParam int song_count,@RequestParam int length,
+                                       @RequestParam String image_url,
+                                       Model model){
+        album newAlbum=new album(title,artist,song_count,length,image_url);
+        albumCRUD.save(newAlbum);
         return new RedirectView("/albums");
     }
     @GetMapping("/album")
@@ -56,7 +60,12 @@ public class albumController {
         modal.addAttribute("albumsList",albumCRUD.findAll());
         return "albums";
         }
-<<<<<<< HEAD:src/main/java/com/example/songr/web/albumController.java
+
+    @ResponseBody
+    @RequestMapping(value="/albums/{id}",method = RequestMethod.GET)
+    public album getbyIdAlbum(@PathVariable int id){
+        return albumCRUD.findByid(id);
+    }
     @ResponseBody
     @GetMapping("/album")
     List<album> getAllAlbums(){
@@ -64,19 +73,15 @@ public class albumController {
 
     }
     private final songRepsoitry songRepsoitry;
-    @ResponseBody
-    @PostMapping("/albums/{id}")
-    RedirectView addSongToAlbum(@PathVariable Integer id ,@RequestBody song song){
-        album album= albumCRUD.findById(id).orElseThrow();
-        album.setSongs(song);
-        albumCRUD.save(album);
-        return new RedirectView("/album");
+
+
+
 
     }
-=======
+
         @PostMapping("/getSpecificAlbum")
          RedirectView d(){
           return new RedirectView("albumsJson");
         }
->>>>>>> 6ac6d6004f6552b1cc77daf0fb2363fadd6921ca:src/main/java/com/example/songr/web/Controller.java
+
 }

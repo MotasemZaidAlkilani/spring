@@ -5,6 +5,9 @@
     <title>Title</title>
 </head>
 <body>
+<a href="/">back</a>
+<h1>add new album </h1>
+<p>***************</p>
 <form action="/addAlbum" method="post">
    <p><strong>title</strong></p> <input type="text" name="title"><br>
     <p><strong>artist name</strong></p> <input type="text" name="artist"><br>
@@ -12,14 +15,20 @@
     <p><strong>length</strong></p> <input type="number" name="length"><br>
     <p><strong>URL</strong></p> <input type="text" name="image_url"><br>
     <input type="submit" name="submit">
+</form>
+    <p>***************</p>
+
+    <h1>all albums </h1>
+    <p>***************</p>
 
     <ul th:each="album : ${albumsList}">
        <p><strong>title :</strong><span th:text="${album.title}"></span></p>
         <p><strong>artist :</strong><span th:text="${album.artist}"></spanth:text> </span></p>
         <p><strong>song_count :</strong> <span th:text="${album.song_count}" ></span></p>
         <p><strong>length :</strong> <span th:text="${album.length}"></span></p>
-        <p><strong>image_url :</strong> <span th:text="${album.image_url}"> </span></p>
-        <p>************************************************</p>
+        <p><strong>image:</strong><img width="50px"th:src="${album.image_url}" />
+
+        <p>***************</p>
     </ul>
 
 </form>

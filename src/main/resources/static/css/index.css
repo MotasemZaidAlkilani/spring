@@ -3,6 +3,7 @@ html, body {
     height: 100%;
 }
 .main-div{
+display:flex;
 text-align: center;
  background-color:white;}
 body{
@@ -15,16 +16,23 @@ align-items: center;
 }
 h1,p{
 color :white;
-font-size: 50px;
+font-size: 20px;
 }
 h1{
-font-size: 90px;
+font-size: 30px;
 }
 .describtion{
- width:500px;
-
+  
+}
  background-color: black;
 }
 form{
 padding:15px;
+}
+.words{
+width:100%;
+margin:0;
+}
+.message{
+color:black;
 }

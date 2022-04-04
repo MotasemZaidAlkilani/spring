@@ -8,22 +8,34 @@
 </head>
 <body>
 <div class="main-div">
-
 <div>
-<section class="describtion">
-    <h1> ALL ALBUMS IN THE WORD!</h1>
-    <p>IF U WANT SPECIFIC ALBUM , JUST ENTER THE TITLE AND THE ARTIST Of THE ALBUM</p>
-</section>
-</div>
+
+
+    <section class="describtion">
+        <h1> ALL ALBUMS IN THE WORD!</h1>
+        <p>IF U WANT SPECIFIC ALBUM , JUST ENTER THE TITLE AND THE ARTIST Of THE ALBUM</p>
+    </section>
+
     <div>
 <section>
-    <form action="/getSpecificAlbum" method="POST">
-        <input type="text" id="title" name="title" placeholder="title">
-        <input type="text" id="artist" name="artist"  placeholder="artist">
-        <input type="submit" value="get album" >
+    <form action="/addSongToAlbum" method="POST">
+        <input type="number" id="album_id" name="album_id" placeholder="album_id">
+        <input type="text" id="song_title" name="song_title" placeholder="song_title">
+        <input type="text" id="song_length" name="song_length"  placeholder="song_length">
+        <input type="number" id="song_trackNumber" name="song_trackNumber"  placeholder="song_trackNumber">
+        <input type="submit" value="add Song to album" >
+
     </form>
 </section>
+<section>
+    <p class="message" th:text="${message}"></p>
+</section>
+        <section>
+            <a href="/albums">albums</a>
+            <a href="/songs">songs</a>
+        </section>
         </div>
+</div>
 </div>
 </body>
 </html>
