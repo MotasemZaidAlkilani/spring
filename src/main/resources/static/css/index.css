@@ -3,10 +3,11 @@ html, body {
     height: 100%;
 }
 .main-div{
+display:flex;
 text-align: center;
  background-color:white;}
 body{
-background-image:url("https://www.simplyrecipes.com/thmb/JWjdE8YwikAae0KZuyy6ZJW7Utw=/3000x2001/filters:no_upscale():max_bytes(150000):strip_icc()/Simply-Recipes-Homemade-Pizza-Dough-Lead-Shot-1c-c2b1885d27d4481c9cfe6f6286a64342.jpg");
+background-image:url("https://media.istockphoto.com/photos/vinyl-music-records-background-picture-id519280829?b=1&k=20&m=519280829&s=170667a&w=0&h=XNuw7ELGxSQCYT4xUOEFgR28-7t7jlk22dGy3uUUdOI=");
 background-repeat:no-repeat;
  background-size: cover;
  display:flex;
@@ -15,16 +16,21 @@ align-items: center;
 }
 h1,p{
 color :white;
-font-size: 50px;
+font-size: 20px;
 }
 h1{
-font-size: 90px;
+font-size: 30px;
 }
 .describtion{
- width:500px;
-
- background-color: #cb8429;
+ background-color: black;
 }
 form{
 padding:15px;
+}
+.words{
+width:100%;
+margin:0;
+}
+.message{
+color:black;
 }

@@ -45,8 +45,12 @@ public class albumController {
     albumRepositry albumCRUD;
 
     @PostMapping("/addAlbum")
-    public RedirectView createNewAlbum(@ModelAttribute album albumObject){
-        albumCRUD.save(albumObject);
+    public RedirectView createNewAlbum(@RequestParam String title,@RequestParam String artist,
+                                       @RequestParam int song_count,@RequestParam int length,
+                                       @RequestParam String image_url,
+                                       Model model){
+        album newAlbum=new album(title,artist,song_count,length,image_url);
+        albumCRUD.save(newAlbum);
         return new RedirectView("/albums");
     }
     @GetMapping("/albums")
@@ -55,19 +59,17 @@ public class albumController {
         return "albums";
         }
     @ResponseBody
+    @RequestMapping(value="/albums/{id}",method = RequestMethod.GET)
+    public album getbyIdAlbum(@PathVariable int id){
+        return albumCRUD.findByid(id);
+    }
+    @ResponseBody
     @GetMapping("/album")
     List<album> getAllAlbums(){
         return (List<album>) albumCRUD.findAll();
 
     }
     private final songRepsoitry songRepsoitry;
-    @ResponseBody
-    @PostMapping("/albums/{id}")
-    RedirectView addSongToAlbum(@PathVariable Integer id ,@RequestBody song song){
-        album album= albumCRUD.findById(id).orElseThrow();
-        album.setSongs(song);
-        albumCRUD.save(album);
-        return new RedirectView("/album");
 
-    }
+
 }

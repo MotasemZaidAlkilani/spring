@@ -3,11 +3,9 @@ package com.example.songr.data;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
-@RequiredArgsConstructor
-@NoArgsConstructor
-@Setter
-@Getter
+
 @Entity
 public class album {
     @Setter(value = AccessLevel.NONE)
@@ -21,17 +19,18 @@ public class album {
    private int length;
    private String image_url;
 
-   @OneToMany(mappedBy = "album")
-   Set<song> songs;
-
-
-    public int getId() {
-        return id;
+    public album() {
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public album(String title, String artist, int song_count, int length, String image_url) {
+        this.title = title;
+        this.artist = artist;
+        this.song_count = song_count;
+        this.length = length;
+        this.image_url = image_url;
     }
+
+
 
     public String getTitle() {
         return title;
@@ -73,11 +72,5 @@ public class album {
         this.image_url = image_url;
     }
 
-    public Set<song> getSongs() {
-        return songs;
-    }
 
-    public void setSongs(song songs) {
-        this.songs.add(songs);
-    }
 }
