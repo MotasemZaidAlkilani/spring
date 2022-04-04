@@ -31,15 +31,17 @@ public class albumController {
         return "capitalize";
     }
 
-    //    @ResponseBody
-//    @GetMapping("/albums")
-//    List<album> getAllAlbum(){
-//  List <album> albums=new ArrayList<>();
-//  albums.add(new album("never die","john",1000,190,"www.google.com/album1"));
-//    albums.add(new album("i see the sun","mr. I",250,88,"www.google.com/album2"));
-//    albums.add(new album("why so serious","wawah man",5456,240,"www.google.com/album3"));
-//return albums;
-//    }
+
+    @GetMapping("/albumsJson")
+    String getAllAlbum(Model model){
+  List <album> albums=new ArrayList<>();
+  System.out.print(System.getProperty("user.dif"));
+  albums.add(new album("never die","john",1000,190,"https://i.pinimg.com/originals/5b/61/80/5b618062dca30b058454940d7218a3cb.jpg"));
+    albums.add(new album("i see the sun","mr. I",250,88,"https://ichef.bbci.co.uk/news/976/cpsprodpb/3ACD/production/_108235051_abbey_road_mitchel_federan.jpg"));
+    albums.add(new album("why so serious","wawah man",5456,240,"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxBHJVHKOHqhFYt8DZ-V4RD62D7NNE99D-Eg&usqp=CAU"));
+    model.addAttribute("albumsList",albums);
+    return "albumsJson";
+    }
 
     @Autowired
     albumRepositry albumCRUD;
@@ -53,11 +55,12 @@ public class albumController {
         albumCRUD.save(newAlbum);
         return new RedirectView("/albums");
     }
-    @GetMapping("/albums")
+    @GetMapping("/album")
         public String getAllAlbums(Model modal){
         modal.addAttribute("albumsList",albumCRUD.findAll());
         return "albums";
         }
+
     @ResponseBody
     @RequestMapping(value="/albums/{id}",method = RequestMethod.GET)
     public album getbyIdAlbum(@PathVariable int id){
@@ -71,5 +74,14 @@ public class albumController {
     }
     private final songRepsoitry songRepsoitry;
 
+
+
+
+    }
+
+        @PostMapping("/getSpecificAlbum")
+         RedirectView d(){
+          return new RedirectView("albumsJson");
+        }
 
 }
